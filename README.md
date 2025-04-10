@@ -391,7 +391,6 @@ Performs a full refresh of:
 
 - Viewport dimensions
 - Camera bounds and scroll positions
-- Display list rendering parameters
 - Scene boundary calculations (updates `scene.left`/`right`/`top`/`bottom`)
   
 **Example:**
