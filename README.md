@@ -5,6 +5,9 @@ The plugin introduces an adaptive interface and camera system to Phaser 3, enabl
 
 ![preview.gif](https://github.com/Qugurun/Phaser-Plugin-UiMode/blob/main/preview.gif)
 
+
+[Live example - uiMode](https://qugurun.github.io/phaser-uimode/index.html "UiMode") →
+
 # UIMode Plugin Installation Guide
 
 ## **Step 1: Import the Plugin**
