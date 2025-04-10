@@ -251,7 +251,7 @@ create() {
 ```
 
 
-###`update(t, dt)`
+### `update(t, dt)`
 
 Called automatically every frame (if enabled) to handle object updates.
 
@@ -272,7 +272,7 @@ create() {
 ```
 
 
-###`onResize()`
+### `onResize()`
 
 Automatically triggered when the game canvas resizes. Useful for responsive UI adjustments.
 
