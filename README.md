@@ -288,7 +288,7 @@ this.add.image(1, 0.25, "rightAlignedImage");
 - **Automatic Responsiveness:** Objects maintain their relative positions when the window is resized.
 - **Offsets (`setOffset`)** are still defined in pixels and apply on top of percentage-based positions:
 
-    ```js
+```js
 	// Object at 50% X but shifted 100px left
     const obj = this.add.image(0.5, 0, "icon");
     obj.setOffsetX(-100); // Pixels!
@@ -305,7 +305,6 @@ this.add.image(1, 0.25, "rightAlignedImage");
  |               |
 (0,1) —— X —— (1,1)
 ```
-
 
 
 ### **Pixel Mode (`px`)**
