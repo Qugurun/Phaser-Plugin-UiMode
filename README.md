@@ -70,7 +70,7 @@ Gets the current UI mode state or measurement unit.
 **Example:**
 ```js
 const isUiMode = this.getUiMode(); // Returns boolean
-const currentUnit = this.getUiMode(); // Returns "px" or "%"
+const currentUnit = this.getUnitType(); // Returns "px" or "%"
 ```
 
 ---
