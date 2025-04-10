@@ -364,7 +364,6 @@ Updates the following scene properties with current camera-relative boundaries:
 Call this method after:
 
 - Manual camera position changes (`scrollX`/`scrollY`)
-- Dynamic viewport adjustments
 
 **Example:**
 ```js
