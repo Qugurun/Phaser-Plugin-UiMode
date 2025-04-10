@@ -43,7 +43,7 @@ Enables or disables UI mode for the scene and sets the measurement unit.
 - `enabled` (Boolean) - `true` to enable UI mode, `false` to disable
 - `unit` (String, optional) - Measurement unit (`"px"` or `"%"`). Default: `"px"`
 
-**Examples:**
+**Example:**
 ```js
 // Enable UI mode with default px units
 this.setUiMode(true);
@@ -64,7 +64,7 @@ Gets the current UI mode state or measurement unit.
 - For mode check: `Boolean` - `true` if UI mode is enabled
 - For unit check: `String` - `"px"` or `"%"`
 
-**Examples:**
+**Example:**
 ```js
 const isUiMode = this.getUiMode(); // Returns boolean
 const currentUnit = this.getUiMode(); // Returns "px" or "%"
@@ -212,6 +212,44 @@ create() {
 }
 ```
 
+
+### `getOffsetY()`
+
+Returns the **Y position offset** of the object in pixels.
+
+#### **Returns:**
+
+- `number` – The current Y offset value in pixels.
+
+**Example:**
+```js
+create() {  
+    const image = this.add.image(0, 0, "imageKey");  
+    image.setOffsetY(30);  
+    const offsetY = image.getOffsetY(); // Returns 30  
+    console.log(offsetY);  
+}  
+```
+
+---
+
+### `getOffsetX()`
+
+Returns the **X position offset** of the object in pixels.
+
+#### **Returns:**
+
+- `number` – The current X offset value in pixels.
+
+**Example:**
+```js
+create() {  
+    const image = this.add.image(0, 0, "imageKey");  
+    image.setOffsetX(20);  
+    const offsetX = image.getOffsetX(); // Returns 20  
+    console.log(offsetX);  
+}
+```
 ---
 ## UI Mode Behavior: Percentage (`%`) and Pixel (`px`) Units
 
@@ -232,8 +270,8 @@ When the scene is in UI mode with percentage units (`setUiMode(true, "%")`), it 
     - `0` = 0% (top edge of the viewport)
     - `1` = 100% (bottom edge of the viewport)
     - `0.5` = 50% (middle)
-#### Example Placements:
 
+**Example:**
 ```js
 // Places an image at the top-left corner (0%, 0%)
 this.add.image(0, 0, "image");
@@ -277,10 +315,10 @@ When using pixel units (`setUiMode(true, "px")`), coordinates are **normalized 
 - **`x=0`** = Left edge of the game's original width (e.g., `0` in a `width: 1024` config).
 - **`x=1`** = Right edge of the game's original width (e.g., `1024` in a `width: 1024` config).
 - The same logic applies to the Y-axis.
-#### Example:
+
+**Example:**
 
 Given this config:
-
 ```js
 const config = {
   width: 1024,
@@ -297,8 +335,8 @@ const config = {
 - **Pixel-Perfect Placement:** Objects are positioned using exact pixel values from the config’s dimensions.
 - **Normalization Under the Hood:** The engine translates pixel values to a `[0, 1]` range for consistent scaling across resolutions.
 - **Responsiveness:** If the viewport resizes, pixel-based positions are scaled proportionally to maintain their relative placement.
-#### Example Comparison:
 
+**Example:**
 ```js
 // Percentage mode (explicit %)
 this.setUiMode(true, "%");
@@ -328,7 +366,8 @@ Call this method after:
 
 - Manual camera position changes (`scrollX`/`scrollY`)
 - Dynamic viewport adjustments
-#### Example Comparison:
+
+**Example:**
 ```js
 update() {
     // Manual camera movement
