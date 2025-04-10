@@ -399,15 +399,15 @@ Performs a full refresh of:
 this.game.resize();
 ```
 
-### `scene.width` | `scene.height`
+### `game.width` | `game.width`
 
 Return the current logical dimensions of the game's playable area, automatically updated during resize browser.
 
 #### Description
 
-- **`scene.width`**  
+- **`game.width`**  
     Current width of the game's visible area in pixels  
     _Equivalent to `game.config.width` adjusted for scaling_
-- **`scene.height`**  
+- **`game.width`**  
     Current height of the game's visible area in pixels  
     _Equivalent to `game.config.height` adjusted for scaling_
