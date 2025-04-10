@@ -1,0 +1,266 @@
+<html><head><style>body {
+   color: black;
+}
+</style></head><body><h1 id="api-documentation">API Documentation</h1>
+<h2 id="scene-methods">Scene Methods</h2>
+<h3 id="-setuimode-enabled-unit-"><code>setUiMode(enabled, [unit])</code></h3>
+<p>Enables or disables UI mode for the scene and sets the measurement unit.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>enabled</code> (Boolean) - <code>true</code> to enable UI mode, <code>false</code> to disable</li>
+<li><code>unit</code> (String, optional) - Measurement unit (<code>&quot;px&quot;</code> or <code>&quot;%&quot;</code>). Default: <code>&quot;px&quot;</code></li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre><code class="lang-js"><span class="hljs-comment">// Enable UI mode with default px units</span>
+<span class="hljs-keyword">this</span>.setUiMode(<span class="hljs-literal">true</span>);
+
+<span class="hljs-comment">// Enable UI mode with explicit px units</span>
+<span class="hljs-keyword">this</span>.setUiMode(<span class="hljs-literal">true</span>, <span class="hljs-string">"px"</span>);
+
+<span class="hljs-comment">// Enable UI mode with percentage units</span>
+<span class="hljs-keyword">this</span>.setUiMode(<span class="hljs-literal">true</span>, <span class="hljs-string">"%"</span>);
+</code></pre>
+<h3 id="-getuimode-"><code>getUiMode()</code></h3>
+<p>Gets the current UI mode state or measurement unit.</p>
+<p><strong>Returns:</strong></p>
+<ul>
+<li>For mode check: <code>Boolean</code> - <code>true</code> if UI mode is enabled</li>
+<li>For unit check: <code>String</code> - <code>&quot;px&quot;</code> or <code>&quot;%&quot;</code></li>
+</ul>
+<p><strong>Examples:</strong></p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> isUiMode = <span class="hljs-keyword">this</span>.getUiMode(); <span class="hljs-comment">// Returns boolean</span>
+<span class="hljs-keyword">const</span> currentUnit = <span class="hljs-keyword">this</span>.getUiMode(); <span class="hljs-comment">// Returns "px" or "%"</span>
+</code></pre>
+<h2 id="camera-methods">Camera Methods</h2>
+<p>All camera methods work in all scenes.</p>
+<h3 id="-autocenter-value-"><code>autoCenter(value)</code></h3>
+<p>Enables/disables automatic XY centering of the game area.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>value</code> (Boolean) - <code>true</code> to enable, <code>false</code> to disable</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-js">create() {
+    <span class="hljs-keyword">this</span>.cameras.main.autoCenter(<span class="hljs-literal">true</span>);
+}
+</code></pre>
+<h3 id="-autocenterx-value-"><code>autoCenterX(value)</code></h3>
+<p>Enables/disables automatic X-axis centering of the game area.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>value</code> (Boolean) - <code>true</code> to enable, <code>false</code> to disable</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-js">create() {
+    <span class="hljs-keyword">this</span>.cameras.main.autoCenterX(<span class="hljs-literal">true</span>);
+}
+</code></pre>
+<h3 id="-autocentery-value-"><code>autoCenterY(value)</code></h3>
+<p>Enables/disables automatic Y-axis centering of the game area.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>value</code> (Boolean) - <code>true</code> to enable, <code>false</code> to disable</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-js">create() {
+    <span class="hljs-keyword">this</span>.cameras.main.autoCenterY(<span class="hljs-literal">true</span>);
+}
+</code></pre>
+<h3 id="-setcenter-"><code>setCenter()</code></h3>
+<p>One-time camera centering (XY) without auto-update.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-js">create() {
+    <span class="hljs-keyword">this</span>.cameras.main.setCenter();
+}
+</code></pre>
+<h3 id="-setcenterx-"><code>setCenterX()</code></h3>
+<p>One-time camera X-axis centering without auto-update.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-js">create() {
+    <span class="hljs-keyword">this</span>.cameras.main.setCenterX();
+}
+</code></pre>
+<h3 id="-setcentery-"><code>setCenterY()</code></h3>
+<p>One-time camera Y-axis centering without auto-update.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-js">create() {
+    <span class="hljs-keyword">this</span>.cameras.main.setCenterY();
+}
+</code></pre>
+<h2 id="object-methods">Object Methods</h2>
+<p>These methods work only in UI scenes.</p>
+<h3 id="-setoffset-offsetx-offsety-"><code>setOffset(offsetX, offsetY)</code></h3>
+<p>Sets XY position offset in pixels.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>offsetX</code> (Number) - X offset in pixels</li>
+<li><code>offsetY</code> (Number) - Y offset in pixels</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-js">create() {
+    <span class="hljs-keyword">this</span>.setUiMode(<span class="hljs-keyword">true</span>, <span class="hljs-string">"%"</span>);
+    <span class="hljs-keyword">const</span> <span class="hljs-built_in">image</span> = <span class="hljs-keyword">this</span>.<span class="hljs-built_in">add</span>.<span class="hljs-built_in">image</span>(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-string">"imageKey"</span>);
+    <span class="hljs-built_in">image</span>.setOffset(<span class="hljs-number">-50</span>, <span class="hljs-number">50</span>);
+}
+</code></pre>
+<h3 id="-setoffsetx-offset-"><code>setOffsetX(offset)</code></h3>
+<p>Sets X position offset in pixels.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>offset</code> (Number) - X offset in pixels</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-js">create() {
+    <span class="hljs-keyword">this</span>.setUiMode(<span class="hljs-keyword">true</span>, <span class="hljs-string">"%"</span>);
+    <span class="hljs-keyword">const</span> <span class="hljs-built_in">image</span> = <span class="hljs-keyword">this</span>.<span class="hljs-built_in">add</span>.<span class="hljs-built_in">image</span>(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-string">"imageKey"</span>);
+    <span class="hljs-built_in">image</span>.setOffsetX(<span class="hljs-number">-50</span>);
+}
+</code></pre>
+<h3 id="-setoffsety-offset-"><code>setOffsetY(offset)</code></h3>
+<p>Sets Y position offset in pixels.</p>
+<p><strong>Parameters:</strong></p>
+<ul>
+<li><code>offset</code> (Number) - Y offset in pixels</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-js">create() {
+    <span class="hljs-keyword">this</span>.setUiMode(<span class="hljs-keyword">true</span>, <span class="hljs-string">"%"</span>);
+    <span class="hljs-keyword">const</span> <span class="hljs-built_in">image</span> = <span class="hljs-keyword">this</span>.<span class="hljs-built_in">add</span>.<span class="hljs-built_in">image</span>(<span class="hljs-number">0</span>, <span class="hljs-number">1</span>, <span class="hljs-string">"imageKey"</span>);
+    <span class="hljs-built_in">image</span>.setOffsetY(<span class="hljs-number">50</span>);
+}
+</code></pre>
+<h2 id="ui-mode-behavior-percentage-and-pixel-px-units">UI Mode Behavior: Percentage (<code>%</code>) and Pixel (<code>px</code>) Units</h2>
+<h3 id="-percentage-mode-"><strong>Percentage Mode (<code>%</code>)</strong></h3>
+<p>When the scene is in UI mode with percentage units (<code>setUiMode(true, &quot;%&quot;)</code>), it uses <strong>normalized coordinates</strong> for positioning elements relative to the viewport:</p>
+<h4 id="key-principles-">Key Principles:</h4>
+<ol>
+<li><p><strong>X-Axis (Horizontal):</strong></p>
+<ul>
+<li><code>0</code> = 0% (left edge of the viewport)</li>
+<li><code>1</code> = 100% (right edge of the viewport)</li>
+<li><code>0.5</code> = 50% (center)</li>
+</ul>
+</li>
+<li><p><strong>Y-Axis (Vertical):</strong></p>
+<ul>
+<li><code>0</code> = 0% (top edge of the viewport)</li>
+<li><code>1</code> = 100% (bottom edge of the viewport)</li>
+<li><code>0.5</code> = 50% (middle)<h4 id="example-placements-">Example Placements:</h4>
+</li>
+</ul>
+</li>
+</ol>
+<pre><code class="lang-js"><span class="hljs-comment">// Places an image at the top-left corner (0%, 0%)</span>
+<span class="hljs-keyword">this</span>.<span class="hljs-built_in">add</span>.<span class="hljs-built_in">image</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-string">"image"</span>);
+
+<span class="hljs-comment">// Centers an object (50% X, 50% Y)</span>
+<span class="hljs-keyword">this</span>.<span class="hljs-built_in">add</span>.<span class="hljs-built_in">image</span>(<span class="hljs-number">0.5</span>, <span class="hljs-number">0.5</span>, <span class="hljs-string">"centeredImage"</span>);
+
+<span class="hljs-comment">// Positions an object at the right edge (100% X) and 25% from the top</span>
+<span class="hljs-keyword">this</span>.<span class="hljs-built_in">add</span>.<span class="hljs-built_in">image</span>(<span class="hljs-number">1</span>, <span class="hljs-number">0.25</span>, <span class="hljs-string">"rightAlignedImage"</span>);
+</code></pre>
+<h4 id="key-features-">Key Features:</h4>
+<ul>
+<li><strong>Automatic Responsiveness:</strong> Objects maintain their relative positions when the window is resized.</li>
+<li><p><strong>Offsets (<code>setOffset</code>)</strong> are still defined in pixels and apply on top of percentage-based positions:</p>
+<pre><code class="lang-js">  <span class="hljs-comment">// Object at 50% X but shifted 100px left</span>
+  <span class="hljs-keyword">const</span> obj = <span class="hljs-keyword">this</span>.<span class="hljs-built_in">add</span>.<span class="hljs-built_in">image</span>(<span class="hljs-number">0.5</span>, <span class="hljs-number">0</span>, <span class="hljs-string">"icon"</span>);
+  obj.setOffsetX(<span class="hljs-number">-100</span>); <span class="hljs-comment">// Pixels!</span>
+</code></pre>
+</li>
+<li><p><strong>Camera Behavior:</strong> In UI mode, the camera automatically adjusts to the viewport, making methods like <code>autoCenter()</code> unnecessary.</p>
+</li>
+</ul>
+<h4 id="coordinate-system-visualization-">Coordinate System Visualization:</h4>
+<pre><code class="lang-js">(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>) —— X —— (<span class="hljs-number">1</span>,<span class="hljs-number">0</span>)
+ |               |
+ Y               Y
+ |               |
+(<span class="hljs-number">0</span>,<span class="hljs-number">1</span>) —— X —— (<span class="hljs-number">1</span>,<span class="hljs-number">1</span>)
+</code></pre>
+<hr>
+<h3 id="-pixel-mode-px-"><strong>Pixel Mode (<code>px</code>)</strong></h3>
+<p>When using pixel units (<code>setUiMode(true, &quot;px&quot;)</code>), coordinates are <strong>normalized based on the game&#39;s initial config dimensions</strong>. The engine converts pixel values to a <code>[0, 1]</code> range internally, where:</p>
+<ul>
+<li><strong><code>x=0</code></strong> = Left edge of the game&#39;s original width (e.g., <code>0</code> in a <code>width: 1024</code> config).</li>
+<li><strong><code>x=1</code></strong> = Right edge of the game&#39;s original width (e.g., <code>1024</code> in a <code>width: 1024</code> config).</li>
+<li>The same logic applies to the Y-axis.<h4 id="example-">Example:</h4>
+</li>
+</ul>
+<p>Given this config:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">const</span> <span class="hljs-built_in">config</span> = {
+  <span class="hljs-built_in">width</span>: <span class="hljs-number">1024</span>,
+  <span class="hljs-built_in">height</span>: <span class="hljs-number">768</span>,
+  <span class="hljs-comment">// ... other settings</span>
+};
+</code></pre>
+<ul>
+<li><strong><code>x=1024</code></strong> becomes <strong>normalized <code>x=1</code></strong> (equivalent to 100% width).</li>
+<li><strong><code>y=384</code></strong> (half of <code>768</code>) becomes <strong>normalized <code>y=0.5</code></strong> (equivalent to 50% height).</li>
+</ul>
+<h4 id="key-features-">Key Features:</h4>
+<ul>
+<li><strong>Pixel-Perfect Placement:</strong> Objects are positioned using exact pixel values from the config’s dimensions.</li>
+<li><strong>Normalization Under the Hood:</strong> The engine translates pixel values to a <code>[0, 1]</code> range for consistent scaling across resolutions.</li>
+<li><strong>Responsiveness:</strong> If the viewport resizes, pixel-based positions are scaled proportionally to maintain their relative placement.<h4 id="example-comparison-">Example Comparison:</h4>
+</li>
+</ul>
+<pre><code class="lang-js"><span class="hljs-comment">// Percentage mode (explicit %)</span>
+<span class="hljs-keyword">this</span>.setUiMode(<span class="hljs-literal">true</span>, <span class="hljs-string">"%"</span>);
+<span class="hljs-keyword">this</span>.add.image(<span class="hljs-number">1</span>, <span class="hljs-number">0.5</span>, <span class="hljs-string">"image"</span>); <span class="hljs-comment">// Right edge, vertical center</span>
+
+<span class="hljs-comment">// Pixel mode (normalized from config)</span>
+<span class="hljs-keyword">this</span>.setUiMode(<span class="hljs-literal">true</span>, <span class="hljs-string">"px"</span>);
+<span class="hljs-keyword">this</span>.add.image(<span class="hljs-number">1024</span>, <span class="hljs-number">384</span>, <span class="hljs-string">"image"</span>); <span class="hljs-comment">// Same position as above (if config.width = 1024, config.height = 768)</span>
+</code></pre>
+<h3 id="-game-updateedges-scene-"><code>game.updateEdges(scene)</code></h3>
+<p>Forces an update of the scene&#39;s boundary variables. While these values are automatically updated during window resizing, manual camera movements require explicit updates to maintain accuracy.</p>
+<h4 id="description">Description</h4>
+<p>Updates the following scene properties with current camera-relative boundaries:</p>
+<ul>
+<li><code>scene.left</code> - Leftmost visible X-coordinate</li>
+<li><code>scene.top</code> - Topmost visible Y-coordinate</li>
+<li><code>scene.right</code> - Rightmost visible X-coordinate</li>
+<li><code>scene.bottom</code> - Bottommost visible Y-coordinate<h4 id="when-to-use">When to Use</h4>
+</li>
+</ul>
+<p>Call this method after:</p>
+<ul>
+<li>Manual camera position changes (<code>scrollX</code>/<code>scrollY</code>)</li>
+<li>Dynamic viewport adjustments</li>
+<li><p>Any operation that moves the camera without triggering resize events</p>
+<h4 id="example-comparison-">Example Comparison:</h4>
+<pre><code class="lang-js">update() {
+  <span class="hljs-comment">// Manual camera movement</span>
+  <span class="hljs-keyword">this</span>.cameras.main.scrollX -= <span class="hljs-number">1.0</span>;
+
+  <span class="hljs-comment">// Update boundary values</span>
+  <span class="hljs-keyword">this</span>.game.updateEdges(<span class="hljs-keyword">this</span>);
+
+  <span class="hljs-comment">// Position object at current left-top edge</span>
+  <span class="hljs-keyword">this</span>.bar.setPosition(<span class="hljs-keyword">this</span>.left, <span class="hljs-keyword">this</span>.top);
+}
+</code></pre>
+</li>
+</ul>
+<h3 id="-game-resize-"><code>game.resize()</code></h3>
+<p>Triggers a complete recalculation of the game&#39;s layout and camera parameters. While this method is automatically called during browser window resizing, it can be manually invoked when forced layout updates are required.</p>
+<h4 id="description">Description</h4>
+<p>Performs a full refresh of:</p>
+<ul>
+<li>Viewport dimensions</li>
+<li>Camera bounds and scroll positions</li>
+<li>Display list rendering parameters</li>
+<li>Scene boundary calculations (updates <code>scene.left</code>/<code>right</code>/<code>top</code>/<code>bottom</code>)</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre><code class="lang-js"><span class="hljs-selector-tag">this</span><span class="hljs-selector-class">.game</span><span class="hljs-selector-class">.resize</span>();
+</code></pre>
+<h3 id="-scene-width-scene-height-"><code>scene.width</code> | <code>scene.height</code></h3>
+<p>Return the current logical dimensions of the game&#39;s playable area, automatically updated during resize browser.</p>
+<h4 id="description">Description</h4>
+<ul>
+<li><strong><code>scene.width</code></strong><br>  Current width of the game&#39;s visible area in pixels<br>  <em>Equivalent to <code>game.config.width</code> adjusted for scaling</em></li>
+<li><strong><code>scene.height</code></strong><br>  Current height of the game&#39;s visible area in pixels<br>  <em>Equivalent to <code>game.config.height</code> adjusted for scaling</em></li>
+</ul>
+</body></html>
