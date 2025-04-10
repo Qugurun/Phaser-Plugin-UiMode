@@ -213,6 +213,25 @@ create() {
 ```
 
 
+### `getOffsetX()`
+
+Returns the **X position offset** of the object in pixels.
+
+#### **Returns:**
+
+- `number` – The current X offset value in pixels.
+
+**Example:**
+```js
+create() {  
+    const image = this.add.image(0, 0, "imageKey");  
+    image.setOffsetX(20);  
+    const offsetX = image.getOffsetX(); // Returns 20  
+    console.log(offsetX);  
+}
+```
+
+
 ### `getOffsetY()`
 
 Returns the **Y position offset** of the object in pixels.
@@ -231,25 +250,43 @@ create() {
 }  
 ```
 
----
 
-### `getOffsetX()`
+###`update(t, dt)`
 
-Returns the **X position offset** of the object in pixels.
+Called automatically every frame (if enabled) to handle object updates.
 
-#### **Returns:**
+Parameters:
+    -`t` (number) - Current timestamp
 
-- `number` – The current X offset value in pixels.
+    -`dt` (number) - Delta time since last frame in milliseconds
 
 **Example:**
 ```js
-create() {  
-    const image = this.add.image(0, 0, "imageKey");  
-    image.setOffsetX(20);  
-    const offsetX = image.getOffsetX(); // Returns 20  
-    console.log(offsetX);  
+create() {
+    const obj = this.add.sprite(100, 100, 'spriteKey');
+    obj.update = function(t, dt) {
+        // Custom update logic
+        this.x += dt * 0.1; // Move right at 0.1px/ms
+    };
 }
 ```
+
+
+###`onResize()`
+
+Automatically triggered when the game canvas resizes. Useful for responsive UI adjustments.
+
+**Example:**
+```js
+create() {
+    const button = this.add.image(100, 100, 'button');
+    button.onResize = function() {
+        // Reposition when screen resizes
+        console.log("Resize!");
+    };
+}
+```
+
 ---
 ## UI Mode Behavior: Percentage (`%`) and Pixel (`px`) Units
 
