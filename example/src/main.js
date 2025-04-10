@@ -34,29 +34,4 @@ const config = {
     ]
 };
 
-Phaser.Scene.prototype.getLeft = function () {
-    if (!this.cameras || !this.game) return;
-    const camera = this.cameras.main;
-    return camera.scrollX;
-};
-
-Phaser.Scene.prototype.getTop = function () {
-    if (!this.cameras || !this.game) return;
-    const camera = this.cameras.main;
-    return camera.scrollY;
-};
-
-Phaser.Scene.prototype.getRight = function () {
-    if (!this.cameras || !this.game) return;
-    const camera = this.cameras.main;
-
-    return camera.scrollX + (this.game.width);
-};
-
-Phaser.Scene.prototype.getBottom = function () {
-    if (!this.cameras || !this.game) return;
-    const camera = this.cameras.main;
-    return camera.scrollY + (this.game.height);
-};
-
 export default new Phaser.Game(config);

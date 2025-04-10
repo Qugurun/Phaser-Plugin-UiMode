@@ -322,6 +322,7 @@ export default class UiMode extends Phaser.Plugins.BasePlugin {
 
         //-------------------------------------------------------------
         const zoom = bh / this.game.height;
+
         scale.setZoom(isFinite(zoom) && zoom > 0 ? zoom : 1);
         scale.resize(this.game.width, this.game.height);
         scale.refresh();
