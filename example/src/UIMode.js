@@ -1,7 +1,7 @@
 /**
  * Phaser 3 UIMode Plugin
  * Version: 1.0.0
- * Author: Qugurun and tg:Phaser_Community
+ * Author: WitGames (https://wit.games/)
  * License: MIT
  */
 
