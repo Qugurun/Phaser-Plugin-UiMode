@@ -67,8 +67,6 @@ const isUiMode = this.getUiMode(); // Returns boolean
 ---
 ## Camera Methods
 
-All camera methods work in all scenes.
-
 ### `autoCenter(value)`
 
 Enables/disables automatic XY centering of the game area.
