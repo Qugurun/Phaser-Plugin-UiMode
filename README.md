@@ -1,6 +1,6 @@
 [![Page Views Count](https://badges.toozhao.com/badges/01JRF7P6GTKZSJV50TXAPFGT96/green.svg)](https://badges.toozhao.com/stats/01JRF7P6GTKZSJV50TXAPFGT96 "Get your own page views count badge on badges.toozhao.com")
 
-# Phaser-Plugin-UiMode
+# Phaser-Plugin-UiMode 2.0.0
 The plugin introduces an adaptive interface for HUD system to Phaser 3, enabling easy creation of responsive scenes.
 
 ![preview.gif](https://github.com/Qugurun/Phaser-Plugin-UiMode/blob/main/preview.gif)
@@ -39,23 +39,16 @@ const config = {
 
 ## Scene Methods
 
-### `setUiMode(enabled, [unit])`
+### `setUiMode(enabled)`
 Enables or disables UI mode for the scene and sets the measurement unit.
 
 **Parameters:**
 - `enabled` (Boolean) - `true` to enable UI mode, `false` to disable
-- `unit` (String, optional) - Measurement unit (`"px"` or `"%"`). Default: `"px"`
 
 **Example:**
 ```js
-// Enable UI mode with default px units
+// Enable UI mode
 this.setUiMode(true);
-
-// Enable UI mode with explicit px units
-this.setUiMode(true, "px");
-
-// Enable UI mode with percentage units
-this.setUiMode(true, "%");
 ```
 
 ### `getUiMode()`
@@ -65,12 +58,10 @@ Gets the current UI mode state or measurement unit.
 **Returns:**
 
 - For mode check: `Boolean` - `true` if UI mode is enabled
-- For unit check: `String` - `"px"` or `"%"`
 
 **Example:**
 ```js
 const isUiMode = this.getUiMode(); // Returns boolean
-const currentUnit = this.getUnitType(); // Returns "px" or "%"
 ```
 
 ---
@@ -173,7 +164,7 @@ Sets XY position offset in pixels.
 **Example:**
 ```js
 create() {
-    this.setUiMode(true, "%");
+    this.setUiMode(true);
     const image = this.add.image(0, 1, "imageKey");
     image.setOffset(-50, 50);
 }
@@ -191,7 +182,7 @@ Sets X position offset in pixels.
 **Example:**
 ```js
 create() {
-    this.setUiMode(true, "%");
+    this.setUiMode(true);
     const image = this.add.image(0, 1, "imageKey");
     image.setOffsetX(-50);
 }
@@ -209,7 +200,7 @@ Sets Y position offset in pixels.
 **Example:**
 ```js
 create() {
-    this.setUiMode(true, "%");
+    this.setUiMode(true);
     const image = this.add.image(0, 1, "imageKey");
     image.setOffsetY(50);
 }
@@ -227,6 +218,7 @@ Returns the **X position offset** of the object in pixels.
 **Example:**
 ```js
 create() {  
+    this.setUiMode(true);
     const image = this.add.image(0, 0, "imageKey");  
     image.setOffsetX(20);  
     const offsetX = image.getOffsetX(); // Returns 20  
@@ -246,6 +238,7 @@ Returns the **Y position offset** of the object in pixels.
 **Example:**
 ```js
 create() {  
+    this.setUiMode(true);
     const image = this.add.image(0, 0, "imageKey");  
     image.setOffsetY(30);  
     const offsetY = image.getOffsetY(); // Returns 30  
@@ -290,11 +283,11 @@ create() {
 ```
 
 ---
-## UI Mode Behavior: Percentage (`%`) and Pixel (`px`) Units
+## UI Mode Behavior
 
 ### **Percentage Mode (`%`)**
 
-When the scene is in UI mode with percentage units (`setUiMode(true, "%")`), it uses **normalized coordinates** for positioning elements relative to the viewport:
+When the scene is in UI mode (`setUiMode(true)`), it uses **normalized coordinates** for positioning elements relative to the viewport:
 
 #### Key Principles:
 
@@ -328,6 +321,7 @@ this.add.image(1, 0.25, "rightAlignedImage");
 - **Offsets (`setOffset`)** are still defined in pixels and apply on top of percentage-based positions:
 
 ```js
+    this.setUiMode(true);
 	// Object at 50% X but shifted 100px left
     const obj = this.add.image(0.5, 0, "icon");
     obj.setOffsetX(-100); // Pixels!
@@ -343,46 +337,6 @@ this.add.image(1, 0.25, "rightAlignedImage");
  Y               Y
  |               |
 (0,1) —— X —— (1,1)
-```
-
-
-### **Pixel Mode (`px`)**
-
-When using pixel units (`setUiMode(true, "px")`), coordinates are **normalized based on the game's initial config dimensions**. The engine converts pixel values to a `[0, 1]` range internally, where:
-
-- **`x=0`** = Left edge of the game's original width (e.g., `0` in a `width: 1024` config).
-- **`x=1`** = Right edge of the game's original width (e.g., `1024` in a `width: 1024` config).
-- The same logic applies to the Y-axis.
-
-**Example:**
-
-Given this config:
-```js
-const config = {
-  width: 1024,
-  height: 768,
-  // ... other settings
-};
-```
-
-- **`x=1024`** becomes **normalized `x=1`** (equivalent to 100% width).
-- **`y=384`** (half of `768`) becomes **normalized `y=0.5`** (equivalent to 50% height).
-
-#### Key Features:
-
-- **Pixel-Perfect Placement:** Objects are positioned using exact pixel values from the config’s dimensions.
-- **Normalization Under the Hood:** The engine translates pixel values to a `[0, 1]` range for consistent scaling across resolutions.
-- **Responsiveness:** If the viewport resizes, pixel-based positions are scaled proportionally to maintain their relative placement.
-
-**Example:**
-```js
-// Percentage mode (explicit %)
-this.setUiMode(true, "%");
-this.add.image(1, 0.5, "image"); // Right edge, vertical center
-
-// Pixel mode (normalized from config)
-this.setUiMode(true, "px");
-this.add.image(1024, 384, "image"); // Same position as above (if config.width = 1024, config.height = 768)
 ```
 
 ---
@@ -451,4 +405,3 @@ Return the current logical dimensions of the game's playable area, automatically
 
 ---
 #### Roadmap
-- Add support extends class
