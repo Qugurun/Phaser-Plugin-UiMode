@@ -53,7 +53,7 @@ this.setUiMode(true);
 
 ### `getUiMode()`
 
-Gets the current UI mode state or measurement unit.
+Gets the current UI mode state.
 
 **Returns:**
 
