@@ -448,3 +448,7 @@ Return the current logical dimensions of the game's playable area, automatically
 - **`game.width`**  
     Current height of the game's visible area in pixels  
     _Equivalent to `game.config.height` adjusted for scaling_
+
+---
+#### Roadmap
+- Add support extends class
