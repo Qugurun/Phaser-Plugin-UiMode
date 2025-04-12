@@ -285,8 +285,6 @@ create() {
 ---
 ## UI Mode Behavior
 
-### **Percentage Mode (`%`)**
-
 When the scene is in UI mode (`setUiMode(true)`), it uses **normalized coordinates** for positioning elements relative to the viewport:
 
 #### Key Principles:
