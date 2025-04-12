@@ -40,7 +40,7 @@ const config = {
 ## Scene Methods
 
 ### `setUiMode(enabled)`
-Enables or disables UI mode for the scene and sets the measurement unit.
+Enables or disables UI mode for the scene.
 
 **Parameters:**
 - `enabled` (Boolean) - `true` to enable UI mode, `false` to disable
