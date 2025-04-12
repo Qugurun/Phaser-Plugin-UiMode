@@ -21,9 +21,12 @@ export default class GameUi extends Scene {
         const coin = this.add.image(1, 0, "atlas", "coin.png").setOrigin(0.5, 0.5).setOffset(-50, 50);
 
         // button
-        const button = this.add.image(0.5, 1, "atlas", "button.png").setOrigin(0.5, 0.5).setOffsetY(-100);
-        const styleLabelButton = { "color": "#ffffff", "fontFamily": "DimboRegular", "fontSize": "50px" };
-        const buttonLabel = this.add.text(0.5, 1, "Start", styleLabelButton).setOrigin(0.5, 0.5).setOffsetY(-100);
+        const button = this.add.image(0.5, 0.5, "atlas", "button.png").setOrigin(0.5, 0.5);
+        button.setName("button");
+        // console.log(button);
+
+        // const styleLabelButton = { "color": "#ffffff", "fontFamily": "DimboRegular", "fontSize": "50px" };
+        // const buttonLabel = this.add.text(0.5, 1, "Start", styleLabelButton).setOrigin(0.5, 0.5).setOffsetY(-100);
 
         // logo
         const logo = this.add.image(1, 1, "atlas", "phaser.png").setScale(0.25).setOrigin(1, 1).setOffset(-20, -20);

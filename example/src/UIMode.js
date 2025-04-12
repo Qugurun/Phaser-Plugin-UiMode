@@ -312,8 +312,10 @@ export default class UiMode extends Phaser.Plugins.BasePlugin {
                             object.uiX = object.x;
                             object.uiY = object.y;
                         }
-                        const newX = (object.uiX * this.game.width) + object._offsetX || 0;
-                        const newY = (object.uiY * this.game.height) + object._offsetY || 0;
+
+                        const newX = (object.uiX * this.game.width) + (object._offsetX || 0);
+                        const newY = (object.uiY * this.game.height) + (object._offsetY || 0);
+
                         object.setPosition(newX, newY);
                     });
                 }
