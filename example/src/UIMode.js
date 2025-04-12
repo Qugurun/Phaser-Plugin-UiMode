@@ -1,6 +1,6 @@
 /**
  * Phaser 3 UIMode Plugin
- * Version: 2.0.0
+ * Version: 2.0.1
  * Author: Qugurun (tg:qugurun), WitGames (https://wit.games/)
  * License: MIT
  */
@@ -24,7 +24,7 @@ Object.defineProperty(Phaser.GameObjects.GameObject.prototype, 'offsetX', {
         return this._offsetX || 0;
     },
     set(value) {
-        this.offsetX = value;
+        this._offsetX = value;
     },
     enumerable: true,
     configurable: true
@@ -42,12 +42,61 @@ Object.defineProperty(Phaser.GameObjects.GameObject.prototype, 'offsetY', {
     configurable: true
 });
 //=============================================================
+Object.defineProperty(Phaser.GameObjects.Text.prototype, 'offsetX', {
+    get() {
+        return this._offsetX || 0;
+    },
+    set(value) {
+        this._offsetX = value;
+    },
+    enumerable: true,
+    configurable: true
+});
+
+//-------------------------------------------------------------
+Object.defineProperty(Phaser.GameObjects.Text.prototype, 'offsetY', {
+    get() {
+        return this._offsetY || 0;
+    },
+    set(value) {
+        this._offsetY = value;
+    },
+    enumerable: true,
+    configurable: true
+});
+//=============================================================
+Object.defineProperty(Phaser.GameObjects.Container.prototype, 'offsetX', {
+    get() {
+        return this._offsetX || 0;
+    },
+    set(value) {
+        this._offsetX = value;
+    },
+    enumerable: true,
+    configurable: true
+});
+
+//-------------------------------------------------------------
+Object.defineProperty(Phaser.GameObjects.Container.prototype, 'offsetY', {
+    get() {
+        return this._offsetY || 0;
+    },
+    set(value) {
+        this._offsetY = value;
+    },
+    enumerable: true,
+    configurable: true
+});
+//=============================================================
 Phaser.GameObjects.GameObject.prototype.setOffset = function (offsetX = 0, offsetY) {
     if (!this.scene) return;
     this._offsetX = offsetX;
     this._offsetY = offsetY || offsetX;
     return this;
 };
+
+Phaser.GameObjects.Text.prototype.setOffset = Phaser.GameObjects.GameObject.prototype.setOffset;
+Phaser.GameObjects.Container.prototype.setOffset = Phaser.GameObjects.GameObject.prototype.setOffset;
 
 //-------------------------------------------------------------
 Phaser.GameObjects.GameObject.prototype.setOffsetX = function (offset) {
@@ -56,6 +105,9 @@ Phaser.GameObjects.GameObject.prototype.setOffsetX = function (offset) {
     return this;
 };
 
+Phaser.GameObjects.Text.prototype.setOffsetX = Phaser.GameObjects.GameObject.prototype.setOffsetX;
+Phaser.GameObjects.Container.prototype.setOffsetX = Phaser.GameObjects.GameObject.prototype.setOffsetX;
+
 //-------------------------------------------------------------
 Phaser.GameObjects.GameObject.prototype.setOffsetY = function (offset) {
     if (!this.scene) return;
@@ -63,11 +115,18 @@ Phaser.GameObjects.GameObject.prototype.setOffsetY = function (offset) {
     return this;
 };
 
+Phaser.GameObjects.Text.prototype.setOffsetY = Phaser.GameObjects.GameObject.prototype.setOffsetY;
+Phaser.GameObjects.Container.prototype.setOffsetY = Phaser.GameObjects.GameObject.prototype.setOffsetY;
+
 //-------------------------------------------------------------
 Phaser.GameObjects.GameObject.prototype.getOffsetX = function () {
     if (!this.scene) return;
     return this._offsetX || 0;
 };
+
+Phaser.GameObjects.Text.prototype.getOffsetX = Phaser.GameObjects.GameObject.prototype.getOffsetX;
+Phaser.GameObjects.Container.prototype.getOffsetX = Phaser.GameObjects.GameObject.prototype.getOffsetX;
+
 
 //-------------------------------------------------------------
 Phaser.GameObjects.GameObject.prototype.getOffsetY = function () {
@@ -75,6 +134,8 @@ Phaser.GameObjects.GameObject.prototype.getOffsetY = function () {
     return this._offsetY || 0;
 };
 
+Phaser.GameObjects.Text.prototype.getOffsetY = Phaser.GameObjects.GameObject.prototype.getOffsetY;
+Phaser.GameObjects.Container.prototype.getOffsetY = Phaser.GameObjects.GameObject.prototype.getOffsetY;
 //=============================================================
 export default class UiMode extends Phaser.Plugins.BasePlugin {
     constructor(pluginManager) {
@@ -246,8 +307,13 @@ export default class UiMode extends Phaser.Plugins.BasePlugin {
                 //-------------------------------------------------------------
                 if (scene.getUiMode()) {
                     scene.children.list.forEach(object => {
-                        const newX = (object.x * this.game.width) + object._offsetX;
-                        const newY = (object.y * this.game.height) + object._offsetY;
+                        if (object.uiMode == undefined) {
+                            object.uiMode = true;
+                            object.uiX = object.x;
+                            object.uiY = object.y;
+                        }
+                        const newX = (object.uiX * this.game.width) + object._offsetX || 0;
+                        const newY = (object.uiY * this.game.height) + object._offsetY || 0;
                         object.setPosition(newX, newY);
                     });
                 }
