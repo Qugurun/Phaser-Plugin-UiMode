@@ -1,6 +1,6 @@
 [![Page Views Count](https://badges.toozhao.com/badges/01JRF7P6GTKZSJV50TXAPFGT96/green.svg)](https://badges.toozhao.com/stats/01JRF7P6GTKZSJV50TXAPFGT96 "Get your own page views count badge on badges.toozhao.com")
 
-# Phaser-Plugin-UiMode 2.0.1
+# Phaser-Plugin-UiMode 2.0.2
 The plugin introduces an adaptive interface for HUD system to Phaser 3, enabling easy creation of responsive scenes.
 
 ![preview.gif](https://github.com/Qugurun/Phaser-Plugin-UiMode/blob/main/preview.gif)
